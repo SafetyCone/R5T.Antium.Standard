@@ -4,4 +4,11 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1701;1702;1591;1573</NoWarn>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\R5T.Antium.Default\source\R5T.Antium.Default\R5T.Antium.Default.csproj" />
+    <ProjectReference Include="..\..\..\R5T.Gepidia.Local.Standard\source\R5T.Gepidia.Local.Standard\R5T.Gepidia.Local.Standard.csproj" />
+    <ProjectReference Include="..\..\..\R5T.Gepidia.Remote.Standard\source\R5T.Gepidia.Remote.Standard\R5T.Gepidia.Remote.Standard.csproj" />
+    <ProjectReference Include="..\..\..\R5T.Norsica.Standard\source\R5T.Norsica.Standard\R5T.Norsica.Standard.csproj" />
+    <ProjectReference Include="..\..\..\R5T.Pompeii.Standard\source\R5T.Pompeii.Standard\R5T.Pompeii.Standard.csproj" />
+  </ItemGroup>
 </Project>
