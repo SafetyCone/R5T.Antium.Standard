@@ -25,13 +25,13 @@ namespace R5T.Antium.Standard
         /// </summary>
         public static IServiceCollection AddPublishAction(this IServiceCollection services,
             ServiceAction<IEntryPointProjectNameProvider> addEntryPointProjectNameProvider,
-            ServiceAction<IBuildConfigurationNameProvider> addEntryPointProjectBuildConfigurationNameProvider)
+            ServiceAction<IBuildConfigurationNameProvider> addBuildConfigurationNameProvider)
         {
             services.AddDefaultDotnetPublishAction(
                 services.AddEntryPointProjectFilePathProviderAction(addEntryPointProjectNameProvider),
                 services.AddEntryPointProjectBuildOutputPublishDirectoryPathProviderAction(
                     addEntryPointProjectNameProvider,
-                    addEntryPointProjectBuildConfigurationNameProvider),
+                    addBuildConfigurationNameProvider),
                 services.AddDotnetOperatorAction())
                 ;
 
@@ -43,11 +43,11 @@ namespace R5T.Antium.Standard
         /// </summary>
         public static ServiceAction<IPublishAction> AddPublishActionAction(this IServiceCollection services,
             ServiceAction<IEntryPointProjectNameProvider> addEntryPointProjectNameProvider,
-            ServiceAction<IBuildConfigurationNameProvider> addEntryPointProjectBuildConfigurationNameProvider)
+            ServiceAction<IBuildConfigurationNameProvider> addBuildConfigurationNameProvider)
         {
             var serviceAction = new ServiceAction<IPublishAction>(() => services.AddPublishAction(
                 addEntryPointProjectNameProvider,
-                addEntryPointProjectBuildConfigurationNameProvider));
+                addBuildConfigurationNameProvider));
             return serviceAction;
         }
 
@@ -56,12 +56,12 @@ namespace R5T.Antium.Standard
         /// </summary>
         public static IServiceCollection AddPublishDeploymentSourceFileSystemSiteProvider(this IServiceCollection services,
             ServiceAction<IEntryPointProjectNameProvider> addEntryPointProjectNameProvider,
-            ServiceAction<IBuildConfigurationNameProvider> addEntryPointProjectBuildConfigurationNameProvider)
+            ServiceAction<IBuildConfigurationNameProvider> addBuildConfigurationNameProvider)
         {
             services.AddDefaultDeploymentSourceFileSystemSiteProvider(
                 services.AddPublishProjectBuildOutputBinariesDirectoryPathProviderAction(
                     addEntryPointProjectNameProvider,
-                    addEntryPointProjectBuildConfigurationNameProvider),
+                    addBuildConfigurationNameProvider),
                 services.AddLocalFileSystemOperatorAction(),
                 services.AddStringlyTypedPathOperatorAction());
 
@@ -73,11 +73,11 @@ namespace R5T.Antium.Standard
         /// </summary>
         public static ServiceAction<IDeploymentSourceFileSystemSiteProvider> AddPublishDeploymentSourceFileSystemSiteProviderAction(this IServiceCollection services,
             ServiceAction<IEntryPointProjectNameProvider> addEntryPointProjectNameProvider,
-            ServiceAction<IBuildConfigurationNameProvider> addEntryPointProjectBuildConfigurationNameProvider)
+            ServiceAction<IBuildConfigurationNameProvider> addBuildConfigurationNameProvider)
         {
             var serviceAction = new ServiceAction<IDeploymentSourceFileSystemSiteProvider>(() => services.AddPublishDeploymentSourceFileSystemSiteProvider(
                 addEntryPointProjectNameProvider,
-                addEntryPointProjectBuildConfigurationNameProvider));
+                addBuildConfigurationNameProvider));
             return serviceAction;
         }
 
