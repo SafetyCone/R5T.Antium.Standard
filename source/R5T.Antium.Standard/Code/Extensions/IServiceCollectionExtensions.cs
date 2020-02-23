@@ -21,13 +21,13 @@ namespace R5T.Antium.Standard
     public static class IServiceCollectionExtensions
     {
         /// <summary>
-        /// Adds the <see cref="IPublicationOperator"/> service.
+        /// Adds the <see cref="IPublishAction"/> service.
         /// </summary>
-        public static IServiceCollection AddPublicationOperator(this IServiceCollection services,
+        public static IServiceCollection AddPublishAction(this IServiceCollection services,
             ServiceAction<IEntryPointProjectNameProvider> addEntryPointProjectNameProvider,
-            ServiceAction<IEntryPointProjectBuildConfigurationNameProvider> addEntryPointProjectBuildConfigurationNameProvider)
+            ServiceAction<IBuildConfigurationNameProvider> addEntryPointProjectBuildConfigurationNameProvider)
         {
-            services.AddDefaultDotnetPublicationOperator(
+            services.AddDefaultDotnetPublishAction(
                 services.AddEntryPointProjectFilePathProviderAction(addEntryPointProjectNameProvider),
                 services.AddEntryPointProjectBuildOutputPublishDirectoryPathProviderAction(
                     addEntryPointProjectNameProvider,
@@ -39,13 +39,13 @@ namespace R5T.Antium.Standard
         }
 
         /// <summary>
-        /// Adds the <see cref="IPublicationOperator"/> service.
+        /// Adds the <see cref="IPublishAction"/> service.
         /// </summary>
-        public static ServiceAction<IPublicationOperator> AddPublicationOperatorAction(this IServiceCollection services,
+        public static ServiceAction<IPublishAction> AddPublishActionAction(this IServiceCollection services,
             ServiceAction<IEntryPointProjectNameProvider> addEntryPointProjectNameProvider,
-            ServiceAction<IEntryPointProjectBuildConfigurationNameProvider> addEntryPointProjectBuildConfigurationNameProvider)
+            ServiceAction<IBuildConfigurationNameProvider> addEntryPointProjectBuildConfigurationNameProvider)
         {
-            var serviceAction = new ServiceAction<IPublicationOperator>(() => services.AddPublicationOperator(
+            var serviceAction = new ServiceAction<IPublishAction>(() => services.AddPublishAction(
                 addEntryPointProjectNameProvider,
                 addEntryPointProjectBuildConfigurationNameProvider));
             return serviceAction;
@@ -56,7 +56,7 @@ namespace R5T.Antium.Standard
         /// </summary>
         public static IServiceCollection AddPublishDeploymentSourceFileSystemSiteProvider(this IServiceCollection services,
             ServiceAction<IEntryPointProjectNameProvider> addEntryPointProjectNameProvider,
-            ServiceAction<IEntryPointProjectBuildConfigurationNameProvider> addEntryPointProjectBuildConfigurationNameProvider)
+            ServiceAction<IBuildConfigurationNameProvider> addEntryPointProjectBuildConfigurationNameProvider)
         {
             services.AddDefaultDeploymentSourceFileSystemSiteProvider(
                 services.AddPublishProjectBuildOutputBinariesDirectoryPathProviderAction(
@@ -73,7 +73,7 @@ namespace R5T.Antium.Standard
         /// </summary>
         public static ServiceAction<IDeploymentSourceFileSystemSiteProvider> AddPublishDeploymentSourceFileSystemSiteProviderAction(this IServiceCollection services,
             ServiceAction<IEntryPointProjectNameProvider> addEntryPointProjectNameProvider,
-            ServiceAction<IEntryPointProjectBuildConfigurationNameProvider> addEntryPointProjectBuildConfigurationNameProvider)
+            ServiceAction<IBuildConfigurationNameProvider> addEntryPointProjectBuildConfigurationNameProvider)
         {
             var serviceAction = new ServiceAction<IDeploymentSourceFileSystemSiteProvider>(() => services.AddPublishDeploymentSourceFileSystemSiteProvider(
                 addEntryPointProjectNameProvider,
