@@ -119,7 +119,7 @@ namespace R5T.Antium.Standard
         {
             services.AddDefaultRemoteDeploymentSecretsSerializationProvider(
                 addDeploymentDestinationSecretsFileNameProvider,
-                services.AddSecretsFilePathProviderAction(),
+                services.AddSecretsDirectoryFilePathProviderAction(),
                 services.AddJsonFileSerializationOperatorAction());
 
             return services;
@@ -197,7 +197,7 @@ namespace R5T.Antium.Standard
         {
             services.AddDefaultLocalDeploymentSecretsSerializationProvider(
                 addDeploymentDestinationSecretsFileNameProvider,
-                services.AddSecretsFilePathProviderAction(),
+                services.AddSecretsDirectoryFilePathProviderAction(),
                 services.AddJsonFileSerializationOperatorAction());
 
             return services;
