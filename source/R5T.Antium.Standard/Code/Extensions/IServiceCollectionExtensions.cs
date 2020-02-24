@@ -52,7 +52,7 @@ namespace R5T.Antium.Standard
         }
 
         /// <summary>
-        /// Adds the <see cref="IDeploymentSourceFileSystemSiteProvider"/> service.
+        /// Adds the <see cref="IDeploymentSource_FileSystemSiteProvider"/> service.
         /// </summary>
         public static IServiceCollection AddPublishDeploymentSourceFileSystemSiteProvider(this IServiceCollection services,
             ServiceAction<IEntryPointProjectNameProvider> addEntryPointProjectNameProvider,
@@ -69,20 +69,20 @@ namespace R5T.Antium.Standard
         }
 
         /// <summary>
-        /// Adds the <see cref="IDeploymentSourceFileSystemSiteProvider"/> service.
+        /// Adds the <see cref="IDeploymentSource_FileSystemSiteProvider"/> service.
         /// </summary>
-        public static ServiceAction<IDeploymentSourceFileSystemSiteProvider> AddPublishDeploymentSourceFileSystemSiteProviderAction(this IServiceCollection services,
+        public static ServiceAction<IDeploymentSource_FileSystemSiteProvider> AddPublishDeploymentSourceFileSystemSiteProviderAction(this IServiceCollection services,
             ServiceAction<IEntryPointProjectNameProvider> addEntryPointProjectNameProvider,
             ServiceAction<IBuildConfigurationNameProvider> addBuildConfigurationNameProvider)
         {
-            var serviceAction = new ServiceAction<IDeploymentSourceFileSystemSiteProvider>(() => services.AddPublishDeploymentSourceFileSystemSiteProvider(
+            var serviceAction = new ServiceAction<IDeploymentSource_FileSystemSiteProvider>(() => services.AddPublishDeploymentSourceFileSystemSiteProvider(
                 addEntryPointProjectNameProvider,
                 addBuildConfigurationNameProvider));
             return serviceAction;
         }
 
         /// <summary>
-        /// Adds the <see cref="IDeploymentSourceFileSystemSiteProvider"/> service.
+        /// Adds the <see cref="IDeploymentSource_FileSystemSiteProvider"/> service.
         /// </summary>
         public static IServiceCollection AddDeploymentSourceFileSystemSiteProvider(this IServiceCollection services,
             ServiceAction<ISolutionFileNameProvider> addSolutionFileNameProvider,
@@ -99,13 +99,13 @@ namespace R5T.Antium.Standard
         }
 
         /// <summary>
-        /// Adds the <see cref="IDeploymentSourceFileSystemSiteProvider"/> service.
+        /// Adds the <see cref="IDeploymentSource_FileSystemSiteProvider"/> service.
         /// </summary>
-        public static ServiceAction<IDeploymentSourceFileSystemSiteProvider> AddDeploymentSourceFileSystemSiteProviderAction(this IServiceCollection services,
+        public static ServiceAction<IDeploymentSource_FileSystemSiteProvider> AddDeploymentSourceFileSystemSiteProviderAction(this IServiceCollection services,
             ServiceAction<ISolutionFileNameProvider> addSolutionFileNameProvider,
             ServiceAction<IEntryPointProjectNameProvider> addEntryPointProjectNameProvider)
         {
-            var serviceAction = new ServiceAction<IDeploymentSourceFileSystemSiteProvider>(() => services.AddDeploymentSourceFileSystemSiteProvider(
+            var serviceAction = new ServiceAction<IDeploymentSource_FileSystemSiteProvider>(() => services.AddDeploymentSourceFileSystemSiteProvider(
                 addSolutionFileNameProvider,
                 addEntryPointProjectNameProvider));
             return serviceAction;
@@ -136,7 +136,7 @@ namespace R5T.Antium.Standard
         }
 
         /// <summary>
-        /// Adds the <see cref="IDeploymentDestinationFileSystemSiteProvider"/> service.
+        /// Adds the <see cref="IDeploymentDestination_FileSystemSiteProvider"/> service.
         /// </summary>
         public static IServiceCollection AddRemoteDeploymentDestinationFileSystemSiteProvider(this IServiceCollection services,
             ServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider,
@@ -151,20 +151,20 @@ namespace R5T.Antium.Standard
         }
 
         /// <summary>
-        /// Adds the <see cref="IDeploymentDestinationFileSystemSiteProvider"/> service.
+        /// Adds the <see cref="IDeploymentDestination_FileSystemSiteProvider"/> service.
         /// </summary>
-        public static ServiceAction<IDeploymentDestinationFileSystemSiteProvider> AddRemoteDeploymentDestinationFileSystemSiteProviderAction(this IServiceCollection services,
+        public static ServiceAction<IDeploymentDestination_FileSystemSiteProvider> AddRemoteDeploymentDestinationFileSystemSiteProviderAction(this IServiceCollection services,
             ServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider,
             ServiceAction<IAwsEc2ServerHostFriendlyNameProvider> addAwsEc2ServerHostFriendlyNameProvider)
         {
-            var serviceAction = new ServiceAction<IDeploymentDestinationFileSystemSiteProvider>(() => services.AddRemoteDeploymentDestinationFileSystemSiteProvider(
+            var serviceAction = new ServiceAction<IDeploymentDestination_FileSystemSiteProvider>(() => services.AddRemoteDeploymentDestinationFileSystemSiteProvider(
                 addDeploymentDestinationSecretsFileNameProvider,
                 addAwsEc2ServerHostFriendlyNameProvider));
             return serviceAction;
         }
 
         /// <summary>
-        /// Adds the <see cref="IDeploymentDestinationFileSystemSiteProvider"/> service.
+        /// Adds the <see cref="IDeploymentDestination_FileSystemSiteProvider"/> service.
         /// </summary>
         public static IServiceCollection AddRemoteDeploymentDestinationFileSystemSiteProvider(this IServiceCollection services,
             ServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider)
@@ -178,12 +178,12 @@ namespace R5T.Antium.Standard
         }
 
         /// <summary>
-        /// Adds the <see cref="IDeploymentDestinationFileSystemSiteProvider"/> service.
+        /// Adds the <see cref="IDeploymentDestination_FileSystemSiteProvider"/> service.
         /// </summary>
-        public static ServiceAction<IDeploymentDestinationFileSystemSiteProvider> AddRemoteDeploymentDestinationFileSystemSiteProviderAction(this IServiceCollection services,
+        public static ServiceAction<IDeploymentDestination_FileSystemSiteProvider> AddRemoteDeploymentDestinationFileSystemSiteProviderAction(this IServiceCollection services,
             ServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider)
         {
-            var serviceAction = new ServiceAction<IDeploymentDestinationFileSystemSiteProvider>(() => services.AddRemoteDeploymentDestinationFileSystemSiteProvider(
+            var serviceAction = new ServiceAction<IDeploymentDestination_FileSystemSiteProvider>(() => services.AddRemoteDeploymentDestinationFileSystemSiteProvider(
                 addDeploymentDestinationSecretsFileNameProvider));
             return serviceAction;
         }
@@ -214,7 +214,7 @@ namespace R5T.Antium.Standard
         }
 
         /// <summary>
-        /// Adds the <see cref="IDeploymentDestinationFileSystemSiteProvider"/> service.
+        /// Adds the <see cref="IDeploymentDestination_FileSystemSiteProvider"/> service.
         /// </summary>
         public static IServiceCollection AddLocalDeploymentDestinationFileSystemSiteProvider(this IServiceCollection services,
             ServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider)
@@ -228,12 +228,12 @@ namespace R5T.Antium.Standard
         }
 
         /// <summary>
-        /// Adds the <see cref="IDeploymentDestinationFileSystemSiteProvider"/> service.
+        /// Adds the <see cref="IDeploymentDestination_FileSystemSiteProvider"/> service.
         /// </summary>
-        public static ServiceAction<IDeploymentDestinationFileSystemSiteProvider> AddLocalDeploymentDestinationFileSystemSiteProviderAction(this IServiceCollection services,
+        public static ServiceAction<IDeploymentDestination_FileSystemSiteProvider> AddLocalDeploymentDestinationFileSystemSiteProviderAction(this IServiceCollection services,
             ServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider)
         {
-            var serviceAction = new ServiceAction<IDeploymentDestinationFileSystemSiteProvider>(() => services.AddLocalDeploymentDestinationFileSystemSiteProvider(
+            var serviceAction = new ServiceAction<IDeploymentDestination_FileSystemSiteProvider>(() => services.AddLocalDeploymentDestinationFileSystemSiteProvider(
                 addDeploymentDestinationSecretsFileNameProvider));
             return serviceAction;
         }
