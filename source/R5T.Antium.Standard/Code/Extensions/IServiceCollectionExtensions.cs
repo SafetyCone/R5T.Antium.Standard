@@ -283,5 +283,55 @@ namespace R5T.Antium.Standard
                 addDeploymentDestinationSecretsFileNameProvider));
             return serviceAction;
         }
+
+        /// <summary>
+        /// Adds the <see cref="IDeploymentDestination_SecretsDirectory_FileSystemSiteProvider"/> service.
+        /// </summary>
+        public static IServiceCollection AddRemoteDeploymentDestination_SecretsDirectory_FileSystemSiteProvider(this IServiceCollection services,
+            ServiceAction<IAwsEc2ServerHostFriendlyNameProvider> addAwsEc2ServerHostFriendlyNameProvider,
+            ServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider)
+        {
+            services.AddDefaultRemoteDeploymentDestination_SecretsDirectory_FileSystemSiteProvider(
+                services.AddRemoteFileSystemOperatorAction(
+                    addAwsEc2ServerHostFriendlyNameProvider),
+                services.AddRemoteDeploymentSecretsSerializationProviderAction(
+                    addDeploymentDestinationSecretsFileNameProvider));
+
+            return services;
+        }
+
+        /// <summary>
+        /// Adds the <see cref="IDeploymentDestination_SecretsDirectory_FileSystemSiteProvider"/> service.
+        /// </summary>
+        public static ServiceAction<IDeploymentDestination_SecretsDirectory_FileSystemSiteProvider> AddRemoteDeploymentDestination_SecretsDirectory_FileSystemSiteProviderAction(this IServiceCollection services,
+            ServiceAction<IAwsEc2ServerHostFriendlyNameProvider> addAwsEc2ServerHostFriendlyNameProvider,
+            ServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider)
+        {
+            var serviceAction = new ServiceAction<IDeploymentDestination_SecretsDirectory_FileSystemSiteProvider>(() => services.AddRemoteDeploymentDestination_SecretsDirectory_FileSystemSiteProvider(
+                addAwsEc2ServerHostFriendlyNameProvider,
+                addDeploymentDestinationSecretsFileNameProvider));
+            return serviceAction;
+        }
+
+        /// <summary>
+        /// Adds the <see cref="IDeploymentSource_SecretsDirectory_FileSystemSiteProvider"/> service.
+        /// </summary>
+        public static IServiceCollection AddDeploymentSource_SecretsDirectory_FileSystemSiteProvider(this IServiceCollection services)
+        {
+            services.AddDefaultDeploymentSource_SecretsDirectory_FileSystemSiteProvider(
+                services.AddLocalFileSystemOperatorAction(),
+                services.AddSecretsDirectoryPathProviderAction());
+
+            return services;
+        }
+
+        /// <summary>
+        /// Adds the <see cref="IDeploymentSource_SecretsDirectory_FileSystemSiteProvider"/> service.
+        /// </summary>
+        public static ServiceAction<IDeploymentSource_SecretsDirectory_FileSystemSiteProvider> AddDeploymentSource_SecretsDirectory_FileSystemSiteProviderAction(this IServiceCollection services)
+        {
+            var serviceAction = new ServiceAction<IDeploymentSource_SecretsDirectory_FileSystemSiteProvider>(() => services.AddDeploymentSource_SecretsDirectory_FileSystemSiteProvider());
+            return serviceAction;
+        }
     }
 }
