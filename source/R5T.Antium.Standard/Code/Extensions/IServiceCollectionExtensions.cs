@@ -27,7 +27,7 @@ namespace R5T.Antium.Standard
             IServiceAction<IEntryPointProjectNameProvider> addEntryPointProjectNameProvider,
             IServiceAction<IBuildConfigurationNameProvider> addBuildConfigurationNameProvider)
         {
-            services.AddDefaultDotnetPublishAction(
+            services.AddDefaultDotnetPublishAction_Old(
                 services.AddEntryPointProjectFilePathProviderAction(addEntryPointProjectNameProvider),
                 services.AddEntryPointProjectBuildOutputPublishDirectoryPathProviderAction(
                     addEntryPointProjectNameProvider,
@@ -58,11 +58,11 @@ namespace R5T.Antium.Standard
             IServiceAction<IEntryPointProjectNameProvider> addEntryPointProjectNameProvider,
             IServiceAction<IBuildConfigurationNameProvider> addBuildConfigurationNameProvider)
         {
-            services.AddDefaultDeploymentSourceFileSystemSiteProvider(
+            services.AddDefaultDeploymentSourceFileSystemSiteProvider_Old(
                 services.AddPublishProjectBuildOutputBinariesDirectoryPathProviderAction(
                     addEntryPointProjectNameProvider,
                     addBuildConfigurationNameProvider),
-                services.AddLocalFileSystemOperatorAction(),
+                services.AddLocalFileSystemOperatorAction().localFileSystemOperatorAction,
                 services.AddStringlyTypedPathOperatorAction());
 
             return services;
@@ -88,11 +88,11 @@ namespace R5T.Antium.Standard
             IServiceAction<ISolutionFileNameProvider> addSolutionFileNameProvider,
             IServiceAction<IEntryPointProjectNameProvider> addEntryPointProjectNameProvider)
         {
-            services.AddDefaultDeploymentSourceFileSystemSiteProvider(
+            services.AddDefaultDeploymentSourceFileSystemSiteProvider_Old(
                 services.AddStandardProjectBinariesOutputDirectoryPathProviderAction(
                     addSolutionFileNameProvider,
                     addEntryPointProjectNameProvider),
-                services.AddLocalFileSystemOperatorAction(),
+                services.AddLocalFileSystemOperatorAction().localFileSystemOperatorAction,
                 services.AddStringlyTypedPathOperatorAction());
 
             return services;
@@ -117,7 +117,7 @@ namespace R5T.Antium.Standard
         public static IServiceCollection AddRemoteDeploymentSecretsSerializationProvider(this IServiceCollection services,
             IServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider)
         {
-            services.AddDefaultRemoteDeploymentSecretsSerializationProvider(
+            services.AddDefaultRemoteDeploymentSecretsSerializationProvider_Old(
                 addDeploymentDestinationSecretsFileNameProvider,
                 services.AddSecretsDirectoryFilePathProviderAction(),
                 services.AddJsonFileSerializationOperatorAction());
@@ -142,7 +142,7 @@ namespace R5T.Antium.Standard
             IServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider,
             IServiceAction<IAwsEc2ServerHostFriendlyNameProvider> addAwsEc2ServerHostFriendlyNameProvider)
         {
-            services.AddSecretsFileRemoteDeploymentDestinationFileSystemSiteProvider(
+            services.AddSecretsFileRemoteDeploymentDestinationFileSystemSiteProvider_Old(
                 services.AddRemoteDeploymentSecretsSerializationProviderAction(addDeploymentDestinationSecretsFileNameProvider),
                 services.AddRemoteFileSystemOperatorAction(addAwsEc2ServerHostFriendlyNameProvider),
                 services.AddStringlyTypedPathOperatorAction());
@@ -195,7 +195,7 @@ namespace R5T.Antium.Standard
         public static IServiceCollection AddLocalDeploymentSecretsSerializationProvider(this IServiceCollection services,
             IServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider)
         {
-            services.AddDefaultLocalDeploymentSecretsSerializationProvider(
+            services.AddDefaultLocalDeploymentSecretsSerializationProvider_Old(
                 addDeploymentDestinationSecretsFileNameProvider,
                 services.AddSecretsDirectoryFilePathProviderAction(),
                 services.AddJsonFileSerializationOperatorAction());
@@ -219,9 +219,9 @@ namespace R5T.Antium.Standard
         public static IServiceCollection AddLocalDeploymentDestinationFileSystemSiteProvider(this IServiceCollection services,
             IServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider)
         {
-            services.AddSecretsFileLocalDeploymentDestinationFileSystemSiteProvider(
+            services.AddSecretsFileLocalDeploymentDestinationFileSystemSiteProvider_Old(
                 services.AddLocalDeploymentSecretsSerializationProviderAction(addDeploymentDestinationSecretsFileNameProvider),
-                services.AddLocalFileSystemOperatorAction(),
+                services.AddLocalFileSystemOperatorAction().localFileSystemOperatorAction,
                 services.AddStringlyTypedPathOperatorAction());
 
             return services;
@@ -244,7 +244,7 @@ namespace R5T.Antium.Standard
         public static IServiceCollection AddRemoteDeploymentAwsEc2ServerHostFriendlyNameProvider(this IServiceCollection services,
             IServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider)
         {
-            services.AddRemoteDeploymentSerializationAwsEc2ServerHostFriendlyNameProvider(
+            services.AddRemoteDeploymentSerializationAwsEc2ServerHostFriendlyNameProvider_Old(
                 services.AddRemoteDeploymentSecretsSerializationProviderAction(addDeploymentDestinationSecretsFileNameProvider));
 
             return services;
@@ -267,7 +267,7 @@ namespace R5T.Antium.Standard
         public static IServiceCollection AddRemoteDeploymentAwsEc2ServerSecretsFileNameProvider(this IServiceCollection services,
             IServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider)
         {
-            services.AddRemoteDeploymentSerializationAwsEc2ServerSecretsFileNameProvider(
+            services.AddRemoteDeploymentSerializationAwsEc2ServerSecretsFileNameProvider_Old(
                 services.AddRemoteDeploymentSecretsSerializationProviderAction(addDeploymentDestinationSecretsFileNameProvider));
 
             return services;
@@ -291,7 +291,7 @@ namespace R5T.Antium.Standard
             IServiceAction<IAwsEc2ServerHostFriendlyNameProvider> addAwsEc2ServerHostFriendlyNameProvider,
             IServiceAction<IDeploymentDestinationSecretsFileNameProvider> addDeploymentDestinationSecretsFileNameProvider)
         {
-            services.AddDefaultRemoteDeploymentDestination_SecretsDirectory_FileSystemSiteProvider(
+            services.AddDefaultRemoteDeploymentDestination_SecretsDirectory_FileSystemSiteProvider_Old(
                 services.AddRemoteFileSystemOperatorAction(
                     addAwsEc2ServerHostFriendlyNameProvider),
                 services.AddRemoteDeploymentSecretsSerializationProviderAction(
@@ -318,8 +318,8 @@ namespace R5T.Antium.Standard
         /// </summary>
         public static IServiceCollection AddDeploymentSource_SecretsDirectory_FileSystemSiteProvider(this IServiceCollection services)
         {
-            services.AddDefaultDeploymentSource_SecretsDirectory_FileSystemSiteProvider(
-                services.AddLocalFileSystemOperatorAction(),
+            services.AddDefaultDeploymentSource_SecretsDirectory_FileSystemSiteProvider_Old(
+                services.AddLocalFileSystemOperatorAction().localFileSystemOperatorAction,
                 services.AddSecretsDirectoryPathProviderAction());
 
             return services;
